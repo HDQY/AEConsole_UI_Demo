@@ -1,0 +1,91 @@
+  div {
+    display: grid;
+    position: relative;
+  }
+
+  .grid {
+    display: grid;
+    position: relative;
+  }
+
+  .wrapPanel {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+  }
+
+  .stackPanel {
+    display: grid;
+    grid-auto-flow: row;
+    align-content: start;
+  }
+
+  /* 水平对齐 */
+  .Horiz-Align-Left {
+    justify-self: start;
+  }
+
+  .Horiz-Align-Center {
+    justify-self: center;
+  }
+
+  .Horiz-Align-Right {
+    justify-self: end;
+  }
+
+  /* 垂直对齐 */
+  .Vertical-Align-Top {
+    align-self: start;
+  }
+
+  .Vertical-Align-Center {
+    align-self: center;
+  }
+
+  .Vertical-Align-Bottom {
+    align-self: end;
+  }
+
+  /* 水平、垂直居中 */
+  .Align-Center {
+    justify-self: center;
+    align-self: center;
+  }
+
+  /* 水平内容对齐 */
+  .Horiz-Content-Align-Left {
+    justify-content: start;
+    justify-items: start;
+  }
+
+  .Horiz-Content-Align-Center {
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .Horiz-Content-Align-Right {
+    justify-content: end;
+    justify-items: end;
+  }
+
+  /* 垂直内容对齐 */
+  .Vertical-Content-Align-Top {
+    align-items: start;
+  }
+
+  .Vertical-Content-Align-Center {
+    align-items: center;
+  }
+
+  .Vertical-Content-Align-Bottom {
+    align-items: end;
+  }
+
+  /* 水平、垂直内容居中 */
+  .Align-Content-Center {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+
+  
