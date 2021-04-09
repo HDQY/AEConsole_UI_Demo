@@ -79,7 +79,7 @@
   import {RegAccessInfo, ResultCodeInfo} from '../../../main/AEConsoleBoard_pb';
   import {AEConsoleGatewayClient} from '../../../main/AEConsoleGateway_grpc_web_pb';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.97:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
   var request = new RegAccessInfo();
 
   export default {

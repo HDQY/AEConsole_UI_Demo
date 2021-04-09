@@ -29,7 +29,7 @@
   import {AEConsoleGatewayClient} from '../../main/AEConsoleGateway_grpc_web_pb';
 
   const {ipcRenderer: ipc} = require('electron');
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
   var request = new ServiceStatus();
 
   export default {
