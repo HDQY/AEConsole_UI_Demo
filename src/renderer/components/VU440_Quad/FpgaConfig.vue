@@ -117,7 +117,6 @@
         this.binFileName = selectedFilePath[0];
       },
       updateConfigStatus:function() {
-          debugger;
           client.getFpgaConfigStatus(fpgaConfigRequest, {}, (err, response) => {
             
             var progressBar_Process = this.$refs.progressBar_Process;
@@ -159,7 +158,7 @@
         fpgaConfigRequest.setDeviceid(this.deviceId);
         fpgaConfigRequest.setFpgaid(this.fpgaId);
         fpgaConfigRequest.setOperationtype(CONFIGFPGA);
-        fpgaConfigRequest.setBinfilepath(this.binFileName);
+        fpgaConfigRequest.setFilepath(this.binFileName);
 
         //导入child_process模块的exec函数
         var child_process = require('child_process');
@@ -174,7 +173,6 @@
         */
        
         const child = child_process.execFile('./FpgaConfig', [this.deviceId, this.fpgaId, this.binFileName]);
-        debugger;
         this.interval_UpdateConfigStatus = setInterval(this.updateConfigStatus, 1000);
       },
     }

@@ -100,44 +100,9 @@
         this.updateInfo();
       },
       clickButton:function(){
-
-      this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
-      return;
-
-        if (window.Worker) {
-          //alert("是否支持多线程？是");
-        }
-
-        var date = new Date();
-        console.log("getServiceStatus() 1:" + date.getSeconds() + '.' + date.getMilliseconds());
         
-        var date2 = new Date();
-        console.log("getServiceStatus() 2:" + date2.getSeconds() + '.' + date2.getMilliseconds());
-        
-        client.getServiceStatus(request, {}, (err, response) => {
-          var date3 = new Date();
-          console.log("getServiceStatus() 3:" + date3.getSeconds() + '.' + date3.getMilliseconds());
-        });
-
-        client.getServiceStatus(request, {}, (err, response) => {
-          var date4 = new Date();
-          console.log("getServiceStatus() 4:" + date4.getSeconds() + '.' + date4.getMilliseconds());
-        });
-
-        client.getServiceStatus(request, {}, (err, response) => {
-          var date5 = new Date();
-          console.log("getServiceStatus() 5:" + date5.getSeconds() + '.' + date5.getMilliseconds());
-          //debugger;
-
-          if (err) {
-            alert(`Unexpected error for login: code = ${err.code}` +
-                        `, message = "${err.message}"`);
-          } else {
-            //alert(response.getResultcode());
-            this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
-            //this.$router.push({name:'main-window-vu19p-solo',params:{ userId: '123'}});
-          }
-        });
+        this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
+        return;
       },
     }
   }

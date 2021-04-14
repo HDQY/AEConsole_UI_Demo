@@ -16,6 +16,8 @@ var global = Function('return this')();
 
 var AEConsoleBoard_pb = require('./AEConsoleBoard_pb.js');
 goog.object.extend(proto, AEConsoleBoard_pb);
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
+goog.object.extend(proto, google_protobuf_empty_pb);
 goog.exportSymbol('proto.AEConsoleGateway.BoardFpgaConfigInfo', null, global);
 goog.exportSymbol('proto.AEConsoleGateway.ConnectionStatus', null, global);
 goog.exportSymbol('proto.AEConsoleGateway.DeviceInfo', null, global);

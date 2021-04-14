@@ -17,6 +17,8 @@ grpc.web = require('grpc-web');
 
 
 var AEConsoleBoard_pb = require('./AEConsoleBoard_pb.js')
+
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
 const proto = {};
 proto.AEConsoleGateway = require('./AEConsoleGateway_pb.js');
 
@@ -75,16 +77,16 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleBoard.ServiceStatusInfo,
+ *   !proto.google.protobuf.Empty,
  *   !proto.AEConsoleBoard.ServiceStatusInfo>}
  */
 const methodDescriptor_AEConsoleGateway_GetServiceStatus = new grpc.web.MethodDescriptor(
   '/AEConsoleGateway.AEConsoleGateway/GetServiceStatus',
   grpc.web.MethodType.UNARY,
-  AEConsoleBoard_pb.ServiceStatusInfo,
+  google_protobuf_empty_pb.Empty,
   AEConsoleBoard_pb.ServiceStatusInfo,
   /**
-   * @param {!proto.AEConsoleBoard.ServiceStatusInfo} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -97,13 +99,13 @@ const methodDescriptor_AEConsoleGateway_GetServiceStatus = new grpc.web.MethodDe
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleBoard.ServiceStatusInfo,
+ *   !proto.google.protobuf.Empty,
  *   !proto.AEConsoleBoard.ServiceStatusInfo>}
  */
 const methodInfo_AEConsoleGateway_GetServiceStatus = new grpc.web.AbstractClientBase.MethodInfo(
   AEConsoleBoard_pb.ServiceStatusInfo,
   /**
-   * @param {!proto.AEConsoleBoard.ServiceStatusInfo} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -114,7 +116,7 @@ const methodInfo_AEConsoleGateway_GetServiceStatus = new grpc.web.AbstractClient
 
 
 /**
- * @param {!proto.AEConsoleBoard.ServiceStatusInfo} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -135,7 +137,7 @@ proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getServiceStatus =
 
 
 /**
- * @param {!proto.AEConsoleBoard.ServiceStatusInfo} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -229,166 +231,6 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.refreshDeviceInfo
       request,
       metadata || {},
       methodDescriptor_AEConsoleGateway_RefreshDeviceInfo);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleBoard.BoardInfo,
- *   !proto.AEConsoleBoard.BoardTypeInfo>}
- */
-const methodDescriptor_AEConsoleGateway_GetBoardType = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
-  grpc.web.MethodType.UNARY,
-  AEConsoleBoard_pb.BoardInfo,
-  AEConsoleBoard_pb.BoardTypeInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.BoardInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  AEConsoleBoard_pb.BoardTypeInfo.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleBoard.BoardInfo,
- *   !proto.AEConsoleBoard.BoardTypeInfo>}
- */
-const methodInfo_AEConsoleGateway_GetBoardType = new grpc.web.AbstractClientBase.MethodInfo(
-  AEConsoleBoard_pb.BoardTypeInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.BoardInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  AEConsoleBoard_pb.BoardTypeInfo.deserializeBinary
-);
-
-
-/**
- * @param {!proto.AEConsoleBoard.BoardInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.BoardTypeInfo)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.BoardTypeInfo>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getBoardType =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetBoardType,
-      callback);
-};
-
-
-/**
- * @param {!proto.AEConsoleBoard.BoardInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.AEConsoleBoard.BoardTypeInfo>}
- *     Promise that resolves to the response
- */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardType =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetBoardType);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleGateway.DeviceInfo,
- *   !proto.AEConsoleGateway.DeviceTypeInfo>}
- */
-const methodDescriptor_AEConsoleGateway_GetDeviceType = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/GetDeviceType',
-  grpc.web.MethodType.UNARY,
-  proto.AEConsoleGateway.DeviceInfo,
-  proto.AEConsoleGateway.DeviceTypeInfo,
-  /**
-   * @param {!proto.AEConsoleGateway.DeviceInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.AEConsoleGateway.DeviceTypeInfo.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleGateway.DeviceInfo,
- *   !proto.AEConsoleGateway.DeviceTypeInfo>}
- */
-const methodInfo_AEConsoleGateway_GetDeviceType = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.AEConsoleGateway.DeviceTypeInfo,
-  /**
-   * @param {!proto.AEConsoleGateway.DeviceInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.AEConsoleGateway.DeviceTypeInfo.deserializeBinary
-);
-
-
-/**
- * @param {!proto.AEConsoleGateway.DeviceInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.DeviceTypeInfo)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.DeviceTypeInfo>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getDeviceType =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetDeviceType',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetDeviceType,
-      callback);
-};
-
-
-/**
- * @param {!proto.AEConsoleGateway.DeviceInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.AEConsoleGateway.DeviceTypeInfo>}
- *     Promise that resolves to the response
- */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getDeviceType =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetDeviceType',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetDeviceType);
 };
 
 
@@ -549,6 +391,86 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.registerWrite =
       request,
       metadata || {},
       methodDescriptor_AEConsoleGateway_RegisterWrite);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleBoard.BoardInfo,
+ *   !proto.AEConsoleBoard.BoardTypeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_GetBoardType = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
+  grpc.web.MethodType.UNARY,
+  AEConsoleBoard_pb.BoardInfo,
+  AEConsoleBoard_pb.BoardTypeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.BoardInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.BoardTypeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleBoard.BoardInfo,
+ *   !proto.AEConsoleBoard.BoardTypeInfo>}
+ */
+const methodInfo_AEConsoleGateway_GetBoardType = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.BoardTypeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.BoardInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.BoardTypeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleBoard.BoardInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.BoardTypeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.BoardTypeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getBoardType =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetBoardType,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.BoardInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.BoardTypeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardType =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetBoardType);
 };
 
 
@@ -1116,13 +1038,13 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setPllClock =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ *   !proto.AEConsoleGateway.BoardFpgaConfigInfo>}
  */
-const methodDescriptor_AEConsoleGateway_StartFpgaConfig = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+const methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
   grpc.web.MethodType.UNARY,
   AEConsoleBoard_pb.FpgaConfigInfo,
-  AEConsoleBoard_pb.ResultCodeInfo,
+  proto.AEConsoleGateway.BoardFpgaConfigInfo,
   /**
    * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
    * @return {!Uint8Array}
@@ -1130,7 +1052,7 @@ const methodDescriptor_AEConsoleGateway_StartFpgaConfig = new grpc.web.MethodDes
   function(request) {
     return request.serializeBinary();
   },
-  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+  proto.AEConsoleGateway.BoardFpgaConfigInfo.deserializeBinary
 );
 
 
@@ -1138,10 +1060,10 @@ const methodDescriptor_AEConsoleGateway_StartFpgaConfig = new grpc.web.MethodDes
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ *   !proto.AEConsoleGateway.BoardFpgaConfigInfo>}
  */
-const methodInfo_AEConsoleGateway_StartFpgaConfig = new grpc.web.AbstractClientBase.MethodInfo(
-  AEConsoleBoard_pb.ResultCodeInfo,
+const methodInfo_AEConsoleGateway_GetBoardFpgaConfigInfo = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleGateway.BoardFpgaConfigInfo,
   /**
    * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
    * @return {!Uint8Array}
@@ -1149,7 +1071,7 @@ const methodInfo_AEConsoleGateway_StartFpgaConfig = new grpc.web.AbstractClientB
   function(request) {
     return request.serializeBinary();
   },
-  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+  proto.AEConsoleGateway.BoardFpgaConfigInfo.deserializeBinary
 );
 
 
@@ -1158,18 +1080,18 @@ const methodInfo_AEConsoleGateway_StartFpgaConfig = new grpc.web.AbstractClientB
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.BoardFpgaConfigInfo)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.BoardFpgaConfigInfo>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.startFpgaConfig =
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getBoardFpgaConfigInfo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+      '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
       request,
       metadata || {},
-      methodDescriptor_AEConsoleGateway_StartFpgaConfig,
+      methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo,
       callback);
 };
 
@@ -1179,16 +1101,16 @@ proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.startFpgaConfig =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ * @return {!Promise<!proto.AEConsoleGateway.BoardFpgaConfigInfo>}
  *     Promise that resolves to the response
  */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.startFpgaConfig =
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardFpgaConfigInfo =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+      '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
       request,
       metadata || {},
-      methodDescriptor_AEConsoleGateway_StartFpgaConfig);
+      methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo);
 };
 
 
@@ -1269,166 +1191,6 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getFpgaConfigStat
       request,
       metadata || {},
       methodDescriptor_AEConsoleGateway_GetFpgaConfigStatus);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleBoard.ResultCodeInfo>}
- */
-const methodDescriptor_AEConsoleGateway_DoFpgaConfig = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/DoFpgaConfig',
-  grpc.web.MethodType.UNARY,
-  AEConsoleBoard_pb.FpgaConfigInfo,
-  AEConsoleBoard_pb.ResultCodeInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleBoard.ResultCodeInfo>}
- */
-const methodInfo_AEConsoleGateway_DoFpgaConfig = new grpc.web.AbstractClientBase.MethodInfo(
-  AEConsoleBoard_pb.ResultCodeInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
-);
-
-
-/**
- * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.doFpgaConfig =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/DoFpgaConfig',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_DoFpgaConfig,
-      callback);
-};
-
-
-/**
- * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
- *     Promise that resolves to the response
- */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.doFpgaConfig =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/DoFpgaConfig',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_DoFpgaConfig);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleGateway.BoardFpgaConfigInfo>}
- */
-const methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
-  grpc.web.MethodType.UNARY,
-  AEConsoleBoard_pb.FpgaConfigInfo,
-  proto.AEConsoleGateway.BoardFpgaConfigInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.AEConsoleGateway.BoardFpgaConfigInfo.deserializeBinary
-);
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleBoard.FpgaConfigInfo,
- *   !proto.AEConsoleGateway.BoardFpgaConfigInfo>}
- */
-const methodInfo_AEConsoleGateway_GetBoardFpgaConfigInfo = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.AEConsoleGateway.BoardFpgaConfigInfo,
-  /**
-   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.AEConsoleGateway.BoardFpgaConfigInfo.deserializeBinary
-);
-
-
-/**
- * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.BoardFpgaConfigInfo)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.BoardFpgaConfigInfo>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getBoardFpgaConfigInfo =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo,
-      callback);
-};
-
-
-/**
- * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.AEConsoleGateway.BoardFpgaConfigInfo>}
- *     Promise that resolves to the response
- */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardFpgaConfigInfo =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/GetBoardFpgaConfigInfo',
-      request,
-      metadata || {},
-      methodDescriptor_AEConsoleGateway_GetBoardFpgaConfigInfo);
 };
 
 
