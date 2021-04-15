@@ -3463,6 +3463,7 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.toObject = function(includeInstance, m
     operationtype: jspb.Message.getFieldWithDefault(msg, 4, 0),
     configstatus: jspb.Message.getFieldWithDefault(msg, 5, 0),
     progress: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+    activeoperation: jspb.Message.getFieldWithDefault(msg, 7, 0),
     resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
   };
 
@@ -3523,6 +3524,10 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.deserializeBinaryFromReader = function
     case 6:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setProgress(value);
+      break;
+    case 7:
+      var value = /** @type {!proto.AEConsoleBoard.OperationType} */ (reader.readEnum());
+      msg.setActiveoperation(value);
       break;
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
@@ -3596,6 +3601,13 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.serializeBinaryToWriter = function(mes
   if (f !== 0.0) {
     writer.writeDouble(
       6,
+      f
+    );
+  }
+  f = message.getActiveoperation();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      7,
       f
     );
   }
@@ -3718,6 +3730,24 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.setProgress = function(value
 
 
 /**
+ * optional OperationType ActiveOperation = 7;
+ * @return {!proto.AEConsoleBoard.OperationType}
+ */
+proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.getActiveoperation = function() {
+  return /** @type {!proto.AEConsoleBoard.OperationType} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.OperationType} value
+ * @return {!proto.AEConsoleBoard.FpgaConfigStatusInfo} returns this
+ */
+proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.setActiveoperation = function(value) {
+  return jspb.Message.setProto3EnumField(this, 7, value);
+};
+
+
+/**
  * optional ResultCode ResultCode = 100;
  * @return {!proto.AEConsoleBoard.ResultCode}
  */
@@ -3820,7 +3850,8 @@ proto.AEConsoleBoard.PllRunMode = {
 proto.AEConsoleBoard.OperationType = {
   CONFIGFPGA: 0,
   SAVETOSDCARD: 1,
-  CONFIGANDSAVE: 2
+  CONFIGANDSAVE: 2,
+  RECONFIGFPGA: 3
 };
 
 /**

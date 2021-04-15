@@ -81,7 +81,7 @@
   const fs = require('fs');
   const { dialog } = require('electron').remote;
   import {FpgaConfigInfo, OperationType, FpgaConfigStatus, FpgaConfigProgress } from '../../../main/AEConsoleBoard_pb';
-  import {ConfigStatus, CONFIGFPGA, STATUS_CONFIGING, STATUS_SUCCEED, STATUS_FAILED} from '../../../main/AEConsoleBoard_pb';
+  import {ConfigStatus, CONFIGFPGA} from '../../../main/AEConsoleBoard_pb';
   import {AEConsoleGatewayClient} from '../../../main/AEConsoleGateway_grpc_web_pb';
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
@@ -128,17 +128,18 @@
             {
               var configStatus = response.getConfigstatus();
               var progress = response.getProgress();
+
               progressBar_Process.value = progress;
-              if (configStatus != ConfigStatus.STATUS_CONFIGING)
+              if (configStatus != ConfigStatus.CONFIGING)
               {
                 progressBar_Process.value = 100;
                 this.$refs.programBtn01.IsPrograming = false;
-                if (configStatus == ConfigStatus.STATUS_SUCCEED)
+                if (configStatus == ConfigStatus.CONFIGSUCCEED)
                 {
                   this.$refs.label_ProgramStatus.innerText = "READY";
                   this.$refs.label_ProgramStatus.style.background = "#8FB752";
                 }
-                else if (configStatus == ConfigStatus.STATUS_FAILED)
+                else if (configStatus == ConfigStatus.CONFIGSUCCEED)
                 {
                   this.$refs.label_ProgramStatus.innerText = "FAILED";
                   this.$refs.label_ProgramStatus.style.background = "#FF0000";
@@ -173,7 +174,7 @@
         */
        
         const child = child_process.execFile('./FpgaConfig', [this.deviceId, this.fpgaId, this.binFileName]);
-        this.interval_UpdateConfigStatus = setInterval(this.updateConfigStatus, 1000);
+        this.interval_UpdateConfigStatus = setInterval(this.updateConfigStatus, 2000);
       },
     }
   }
