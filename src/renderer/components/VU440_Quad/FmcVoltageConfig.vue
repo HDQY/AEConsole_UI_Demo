@@ -69,7 +69,8 @@
   import VoltageControl from '../CustomControl/VoltageControl.vue';
   
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  //var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new FmcVoltageInfo();
 
   export default {
@@ -77,9 +78,43 @@
     components: {VoltageControl, ProgramButton },
     data() {
       return {
-        deviceId: "202103220001",
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
         fpgaId : 'fpga1',
       }
+    },
+    mounted() {
+        request.setDeviceid(this.deviceId);
+        request.setFpgaid(this.fpgaId);
+        request.setFmcid(3);
+        client.getFmcVoltage(request, {}, (err, response) => {
+                if (err) {
+                  alert(`Unexpected error for getFmcVlotage: code = ${err.code}` +
+                              `, message = "${err.message}"`);
+                } 
+                else 
+                {
+                    var msg = "getFmcVlotage(): resultCode = " + response.getResultcode();
+                    //alert(msg);
+                    this.$refs.voltageControl_Fmc3.voltageIndex = response.getVoltagevalueindex();
+                }
+              });
+
+        request.setDeviceid(this.deviceId);
+        request.setFpgaid(this.fpgaId);
+        request.setFmcid(4);
+        client.getFmcVoltage(request, {}, (err, response) => {
+                if (err) {
+                  alert(`Unexpected error for getFmcVlotage: code = ${err.code}` +
+                              `, message = "${err.message}"`);
+                } 
+                else 
+                {
+                    var msg = "getFmcVlotage(): resultCode = " + response.getResultcode();
+                    //alert(msg);
+                    this.$refs.voltageControl_Fmc4.voltageIndex = response.getVoltagevalueindex();
+                }
+              });
     },
     methods: {
         clickButton:function() {

@@ -113,12 +113,14 @@
                   }
                   else
                   {
-                    alert("resultCode = " + response.getResultcode());
+                    var msg = "resultCode = " + response.getResultcode();
+                    msg += " CoreBoardType = " + response.getCoreboardtype();
+                    msg += " BaseBoardType = " + response.getBaseboardtype(); 
+                    alert(msg);
+
+                    this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
                   }
                 });
-
-        //this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
-        return;
       },
     }
   }
