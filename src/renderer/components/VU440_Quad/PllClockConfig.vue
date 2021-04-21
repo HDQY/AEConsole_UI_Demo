@@ -90,7 +90,8 @@
   import OutputClockControl from '../CustomControl/OutputClockControl.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  //var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new PllClockInfo();
 
   export default {
@@ -99,7 +100,8 @@
     props: ['uid'],
     data() {
       return {
-        deviceId: "202103220001",
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
         pllId : 1,
         regFileName: '',
       }
@@ -117,6 +119,23 @@
       return 'pll_5_PllClockConfig' + this.uid;},
       id_06:function(){
       return 'pll_6_PllClockConfig' + this.uid;},
+    },
+    mounted() {
+        request.setDeviceid(this.deviceId);
+        request.setFpgaid(this.fpgaId);
+        request.setPllid(1);
+        client.getPllClock(request, {}, (err, response) => {
+                if (err) {
+                  alert(`Unexpected error for getPllClock: code = ${err.code}` +
+                              `, message = "${err.message}"`);
+                } 
+                else 
+                {
+                    var msg = "getPllClock(): resultCode = " + response.getResultcode();
+                    alert(msg);
+                    //this.$refs.voltageControl_Fmc3.voltageIndex = response.getVoltagevalueindex();
+                }
+              });
     },
     methods: {
       manualSelectClicked:function() {
