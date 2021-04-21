@@ -237,6 +237,326 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.refreshDeviceInfo
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_OpenConnection = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/OpenConnection',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.DeviceIdInfo,
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleGateway_OpenConnection = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.openConnection =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/OpenConnection',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_OpenConnection,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.openConnection =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/OpenConnection',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_OpenConnection);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_CloseConnection = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/CloseConnection',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.DeviceIdInfo,
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleGateway_CloseConnection = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.closeConnection =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/CloseConnection',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_CloseConnection,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.closeConnection =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/CloseConnection',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_CloseConnection);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleGateway.ConnectionStatusInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_GetConnectionStatus = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetConnectionStatus',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.DeviceIdInfo,
+  proto.AEConsoleGateway.ConnectionStatusInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.ConnectionStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
+ *   !proto.AEConsoleGateway.ConnectionStatusInfo>}
+ */
+const methodInfo_AEConsoleGateway_GetConnectionStatus = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleGateway.ConnectionStatusInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.ConnectionStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.ConnectionStatusInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.ConnectionStatusInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getConnectionStatus =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetConnectionStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetConnectionStatus,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleGateway.ConnectionStatusInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getConnectionStatus =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetConnectionStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetConnectionStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.google.protobuf.Empty,
+ *   !proto.AEConsoleGateway.ConnectionStatusListInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_GetAllConnectionStatus = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetAllConnectionStatus',
+  grpc.web.MethodType.UNARY,
+  google_protobuf_empty_pb.Empty,
+  proto.AEConsoleGateway.ConnectionStatusListInfo,
+  /**
+   * @param {!proto.google.protobuf.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.ConnectionStatusListInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.google.protobuf.Empty,
+ *   !proto.AEConsoleGateway.ConnectionStatusListInfo>}
+ */
+const methodInfo_AEConsoleGateway_GetAllConnectionStatus = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleGateway.ConnectionStatusListInfo,
+  /**
+   * @param {!proto.google.protobuf.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.ConnectionStatusListInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.ConnectionStatusListInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.ConnectionStatusListInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getAllConnectionStatus =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetAllConnectionStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetAllConnectionStatus,
+      callback);
+};
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleGateway.ConnectionStatusListInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getAllConnectionStatus =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetAllConnectionStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetAllConnectionStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.AEConsoleBoard.RegAccessInfo,
  *   !proto.AEConsoleBoard.RegAccessInfo>}
  */
@@ -397,16 +717,16 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.registerWrite =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.AEConsoleBoard.BoardInfo,
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
  *   !proto.AEConsoleBoard.BoardTypeInfo>}
  */
 const methodDescriptor_AEConsoleGateway_GetBoardType = new grpc.web.MethodDescriptor(
   '/AEConsoleGateway.AEConsoleGateway/GetBoardType',
   grpc.web.MethodType.UNARY,
-  AEConsoleBoard_pb.BoardInfo,
+  proto.AEConsoleGateway.DeviceIdInfo,
   AEConsoleBoard_pb.BoardTypeInfo,
   /**
-   * @param {!proto.AEConsoleBoard.BoardInfo} request
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -419,13 +739,13 @@ const methodDescriptor_AEConsoleGateway_GetBoardType = new grpc.web.MethodDescri
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.AEConsoleBoard.BoardInfo,
+ *   !proto.AEConsoleGateway.DeviceIdInfo,
  *   !proto.AEConsoleBoard.BoardTypeInfo>}
  */
 const methodInfo_AEConsoleGateway_GetBoardType = new grpc.web.AbstractClientBase.MethodInfo(
   AEConsoleBoard_pb.BoardTypeInfo,
   /**
-   * @param {!proto.AEConsoleBoard.BoardInfo} request
+   * @param {!proto.AEConsoleGateway.DeviceIdInfo} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -436,7 +756,7 @@ const methodInfo_AEConsoleGateway_GetBoardType = new grpc.web.AbstractClientBase
 
 
 /**
- * @param {!proto.AEConsoleBoard.BoardInfo} request The
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -457,7 +777,7 @@ proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getBoardType =
 
 
 /**
- * @param {!proto.AEConsoleBoard.BoardInfo} request The
+ * @param {!proto.AEConsoleGateway.DeviceIdInfo} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -471,6 +791,86 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardType =
       request,
       metadata || {},
       methodDescriptor_AEConsoleGateway_GetBoardType);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleBoard.PowerStatusInfo,
+ *   !proto.AEConsoleBoard.PowerStatusInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_GetPowerStatus = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetPowerStatus',
+  grpc.web.MethodType.UNARY,
+  AEConsoleBoard_pb.PowerStatusInfo,
+  AEConsoleBoard_pb.PowerStatusInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.PowerStatusInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.PowerStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleBoard.PowerStatusInfo,
+ *   !proto.AEConsoleBoard.PowerStatusInfo>}
+ */
+const methodInfo_AEConsoleGateway_GetPowerStatus = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.PowerStatusInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.PowerStatusInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.PowerStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleBoard.PowerStatusInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.PowerStatusInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.PowerStatusInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getPowerStatus =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetPowerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetPowerStatus,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.PowerStatusInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.PowerStatusInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getPowerStatus =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetPowerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetPowerStatus);
 };
 
 
@@ -877,6 +1277,86 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setFmcVoltage =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.FmcVoltageInfoByFile,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_SetFmcVoltageByFile = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/SetFmcVoltageByFile',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.FmcVoltageInfoByFile,
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.FmcVoltageInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.FmcVoltageInfoByFile,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleGateway_SetFmcVoltageByFile = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.FmcVoltageInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.FmcVoltageInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.setFmcVoltageByFile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/SetFmcVoltageByFile',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_SetFmcVoltageByFile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.FmcVoltageInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setFmcVoltageByFile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/SetFmcVoltageByFile',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_SetFmcVoltageByFile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.AEConsoleBoard.PllClockInfo,
  *   !proto.AEConsoleBoard.PllClockInfo>}
  */
@@ -1031,6 +1511,86 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setPllClock =
       request,
       metadata || {},
       methodDescriptor_AEConsoleGateway_SetPllClock);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.PllClockInfoByFile,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_SetPllClockByFile = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.PllClockInfoByFile,
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.PllClockInfoByFile,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleGateway_SetPllClockByFile = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.setPllClockByFile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_SetPllClockByFile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setPllClockByFile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_SetPllClockByFile);
 };
 
 

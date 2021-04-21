@@ -396,6 +396,86 @@ proto.AEConsoleBoard.AEConsoleBoardPromiseClient.prototype.getBoardType =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.AEConsoleBoard.PowerStatusInfo,
+ *   !proto.AEConsoleBoard.PowerStatusInfo>}
+ */
+const methodDescriptor_AEConsoleBoard_GetPowerStatus = new grpc.web.MethodDescriptor(
+  '/AEConsoleBoard.AEConsoleBoard/GetPowerStatus',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleBoard.PowerStatusInfo,
+  proto.AEConsoleBoard.PowerStatusInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.PowerStatusInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.PowerStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleBoard.PowerStatusInfo,
+ *   !proto.AEConsoleBoard.PowerStatusInfo>}
+ */
+const methodInfo_AEConsoleBoard_GetPowerStatus = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleBoard.PowerStatusInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.PowerStatusInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.PowerStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleBoard.PowerStatusInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.PowerStatusInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.PowerStatusInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleBoard.AEConsoleBoardClient.prototype.getPowerStatus =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/GetPowerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_GetPowerStatus,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.PowerStatusInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.PowerStatusInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleBoard.AEConsoleBoardPromiseClient.prototype.getPowerStatus =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/GetPowerStatus',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_GetPowerStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleBoard.PowerStatusInfo,
  *   !proto.AEConsoleBoard.ResultCodeInfo>}
  */
 const methodDescriptor_AEConsoleBoard_SetPowerStatus = new grpc.web.MethodDescriptor(
@@ -1029,6 +1109,166 @@ proto.AEConsoleBoard.AEConsoleBoardPromiseClient.prototype.getFpgaConfigStatus =
       request,
       metadata || {},
       methodDescriptor_AEConsoleBoard_GetFpgaConfigStatus);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleBoard.NetworkSettingInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleBoard_SetNetworkSetting = new grpc.web.MethodDescriptor(
+  '/AEConsoleBoard.AEConsoleBoard/SetNetworkSetting',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleBoard.NetworkSettingInfo,
+  proto.AEConsoleBoard.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.NetworkSettingInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleBoard.NetworkSettingInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleBoard_SetNetworkSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleBoard.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.NetworkSettingInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleBoard.NetworkSettingInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleBoard.AEConsoleBoardClient.prototype.setNetworkSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/SetNetworkSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_SetNetworkSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.NetworkSettingInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleBoard.AEConsoleBoardPromiseClient.prototype.setNetworkSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/SetNetworkSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_SetNetworkSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.google.protobuf.Empty,
+ *   !proto.AEConsoleBoard.NetworkSettingInfo>}
+ */
+const methodDescriptor_AEConsoleBoard_GetNetworkSetting = new grpc.web.MethodDescriptor(
+  '/AEConsoleBoard.AEConsoleBoard/GetNetworkSetting',
+  grpc.web.MethodType.UNARY,
+  google_protobuf_empty_pb.Empty,
+  proto.AEConsoleBoard.NetworkSettingInfo,
+  /**
+   * @param {!proto.google.protobuf.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.NetworkSettingInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.google.protobuf.Empty,
+ *   !proto.AEConsoleBoard.NetworkSettingInfo>}
+ */
+const methodInfo_AEConsoleBoard_GetNetworkSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleBoard.NetworkSettingInfo,
+  /**
+   * @param {!proto.google.protobuf.Empty} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleBoard.NetworkSettingInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.NetworkSettingInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.NetworkSettingInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleBoard.AEConsoleBoardClient.prototype.getNetworkSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/GetNetworkSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_GetNetworkSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.google.protobuf.Empty} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.NetworkSettingInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleBoard.AEConsoleBoardPromiseClient.prototype.getNetworkSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleBoard.AEConsoleBoard/GetNetworkSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleBoard_GetNetworkSetting);
 };
 
 

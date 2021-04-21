@@ -29,13 +29,15 @@
 <script>
   var fs = require('fs');
   import TitleBar from './CustomControl/TitleBar.vue'
-  import {ServiceStatusInfo} from '../../main/AEConsoleBoard_pb';
+  import {ResultCode} from '../../main/AEConsoleBoard_pb';
+  import {DeviceIdInfo} from '../../main/AEConsoleGateway_pb';
   import {AEConsoleGatewayClient} from '../../main/AEConsoleGateway_grpc_web_pb';
   import ProgramButton from './CustomControl/ProgramButton.vue';
 
   const {ipcRenderer: ipc} = require('electron');
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
-  var request = new ServiceStatusInfo();
+  //var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var request = new DeviceIdInfo();
 
   var filePath = 'C:\\Users\\123\\Desktop\\Config_Login.xml';
 
@@ -44,7 +46,8 @@
     components: { TitleBar, ProgramButton },
     data() {
       return {
-        deviceId: "202103220001",
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
         configFilePath : filePath,
         input_text: '',
       }
@@ -101,7 +104,20 @@
       },
       clickButton:function(){
         
-        this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
+        request.setDeviceid(this.deviceId);
+        client.getBoardType(request, {}, (err, response) => {
+                  if (err) 
+                  {
+                    alert(`Unexpected error for getBoardType: code = ${err.code}` +
+                                `, message = "${err.message}"`);
+                  }
+                  else
+                  {
+                    alert("resultCode = " + response.getResultcode());
+                  }
+                });
+
+        //this.$router.push({name:'main-window-vu440-quad',params:{ userId: '123'}});
         return;
       },
     }
