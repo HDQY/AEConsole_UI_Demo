@@ -90,8 +90,8 @@
   import OutputClockControl from '../CustomControl/OutputClockControl.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  //var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  //var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new PllClockInfo();
 
   export default {
