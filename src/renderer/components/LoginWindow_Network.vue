@@ -35,8 +35,7 @@
   import ProgramButton from './CustomControl/ProgramButton.vue';
 
   const {ipcRenderer: ipc} = require('electron');
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
-  //var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new DeviceIdInfo();
 
   var filePath = 'C:\\Users\\123\\Desktop\\Config_Login.xml';

@@ -90,8 +90,7 @@
   import OutputClockControl from '../CustomControl/OutputClockControl.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
-  //var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new PllClockInfo();
 
   export default {
@@ -102,6 +101,7 @@
       return {
         //deviceId: "202103220001",
         deviceId: "202104200001",
+        fpgaId : "fpga1-base",
         pllId : 1,
         regFileName: '',
       }
@@ -132,8 +132,8 @@
                 else 
                 {
                     var msg = "getPllClock(): resultCode = " + response.getResultcode();
-                    alert(msg);
-                    //this.$refs.voltageControl_Fmc3.voltageIndex = response.getVoltagevalueindex();
+                    //alert(msg);
+                    //alert(response);
                 }
               });
     },
@@ -152,6 +152,7 @@
 
         var filePath = "Si5345_ZDM_50M.txt";
         request.setDeviceid(this.deviceId);
+        request.setFpgaid(this.fpgaId);
         request.setPllid(this.pllId);
         request.setPllrunmode(PllRunMode.FREERUNMODE);
         request.setInputfrequency(54.0);

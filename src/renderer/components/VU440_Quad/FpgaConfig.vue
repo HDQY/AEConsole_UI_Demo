@@ -86,7 +86,7 @@
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var fpgaConfigRequest = new FpgaConfigInfo();
 
   export default {
@@ -94,7 +94,8 @@
     components: {SwitchButton, ProgramButton  },
     data() {
       return {
-        deviceId: "202103220001",
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
         fpgaId : "fpga1",
         binFileName: '',
         interval_UpdateConfigStatus: '',
@@ -160,6 +161,18 @@
         fpgaConfigRequest.setFpgaid(this.fpgaId);
         fpgaConfigRequest.setOperationtype(CONFIGFPGA);
         fpgaConfigRequest.setFilepath(this.binFileName);
+
+        client.startFpgaConfig(fpgaConfigRequest, {}, (err, response) => {
+                if (err) {
+                  alert(`Unexpected error for startFpgaConfig: code = ${err.code}` +
+                              `, message = "${err.message}"`);
+                } 
+                else 
+                {
+                    var msg = "startFpgaConfig(): resultCode = " + response.getResultcode();
+                    //alert(msg);
+                }
+              });
 
         //导入child_process模块的exec函数
         var child_process = require('child_process');

@@ -42,7 +42,7 @@
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import PowerButton from '../CustomControl/PowerButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new PowerStatusInfo();
 
   export default {
@@ -50,16 +50,43 @@
     components: {SwitchButton, PowerButton  },
     data() {
       return {
-        deviceId: "202103220001",
-        fpgaId : "fpga1"
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
+        fpgaId : "fpga1",
+        powerStatus: POWERON
       }
+    },
+    mounted() {
+        request.setDeviceid(this.deviceId);
+        request.setFpgaid("fpga1");
+        client.getPowerStatus(request, {}, (err, response) => {
+                if (err) {
+                  alert(`Unexpected error for getPowerStatus: code = ${err.code}` +
+                              `, message = "${err.message}"`);
+                } 
+                else 
+                {
+                    var msg = "getPowerStatus(): resultCode = " + response.getResultcode();
+                    if (response.getPoweronoff() == 1)
+                    {
+                      msg += " Fpga1 PowerOn.";
+                    }
+                    else if (response.getPoweronoff() == 0)
+                    {
+                      msg += " Fpga1 PowerOff.";
+                    }
+                    alert(msg);
+                }
+              });
     },
     methods: {
       clickButton:function()
       {
+        this.powerStatus = this.$refs.powerButton_Fpga1.IsPowerOn;
+
         request.setDeviceid(this.deviceId);
         request.setFpgaid(this.fpgaId);
-        request.setPoweronoff(POWEROFF);
+        request.setPoweronoff(this.powerStatus);
 
         client.setPowerStatus(request, {}, (err, response) => {
                   if (err) 
@@ -69,7 +96,7 @@
                   } 
                   else 
                   {
-                    alert(response.getResultcode().toString(16));
+                    //alert(response.getResultcode().toString(16));
                   }
                 });
       }

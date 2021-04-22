@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+option csharp_namespace = "AEConsoleGateway";
+
+package AEConsoleGateway;
+
+import "AEConsoleBoard.proto";
+import "google/protobuf/empty.proto";
+//======================================================================
+// 服务定义
+//======================================================================
+// 网关相关功能
+service AEConsoleGateway {  
+    // 服务管理
+    rpc GetServiceStatus(google.protobuf.Empty) returns(AEConsoleBoard.ServiceStatusInfo);
+    rpc RefreshDeviceInfo(DeviceInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // 设备管理
+    rpc OpenConnection(DeviceIdInfo) returns(AEConsoleBoard.ResultCodeInfo);
+    rpc CloseConnection(DeviceIdInfo) returns(AEConsoleBoard.ResultCodeInfo);
+    rpc GetConnectionStatus(DeviceIdInfo) returns(ConnectionStatusInfo);
+    rpc GetAllConnectionStatus(google.protobuf.Empty) returns(ConnectionStatusListInfo);
+
+    // 寄存器访问
+    rpc RegisterRead(AEConsoleBoard.RegAccessInfo) returns(AEConsoleBoard.RegAccessInfo);
+    rpc RegisterWrite(AEConsoleBoard.RegAccessInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // 板卡信息 —— 仅用于单机版（设备由单块板卡组成）
+    rpc GetBoardType(DeviceIdInfo) returns(AEConsoleBoard.BoardTypeInfo);
+
+    // 远程断上电
+    rpc GetPowerStatus(AEConsoleBoard.PowerStatusInfo) returns(AEConsoleBoard.PowerStatusInfo);
+    rpc SetPowerStatus(AEConsoleBoard.PowerStatusInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // Reset 相关
+    rpc Reset(AEConsoleBoard.ResetInfo) returns(AEConsoleBoard.ResultCodeInfo);
+    rpc SetSync(AEConsoleBoard.SyncInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // FMC 电压
+    rpc GetFmcVoltage(AEConsoleBoard.FmcVoltageInfo) returns(AEConsoleBoard.FmcVoltageInfo);
+    rpc SetFmcVoltage(AEConsoleBoard.FmcVoltageInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    rpc SetFmcVoltageByFile(FmcVoltageInfoByFile) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // PLL 时钟
+    rpc GetPllClock(AEConsoleBoard.PllClockInfo) returns(AEConsoleBoard.PllClockInfo);
+    rpc SetPllClock(AEConsoleBoard.PllClockInfo) returns(AEConsoleBoard.ResultCodeInfo);
+
+    rpc SetPllClockByFile(PllClockInfoByFile) returns(AEConsoleBoard.ResultCodeInfo);
+
+    // FPGA 配置
+    rpc GetBoardFpgaConfigInfo(AEConsoleBoard.FpgaConfigInfo) returns(BoardFpgaConfigInfo);
+
+    rpc StartFpgaConfig(AEConsoleBoard.FpgaConfigInfo) returns(AEConsoleBoard.ResultCodeInfo);
+    rpc GetFpgaConfigStatus(AEConsoleBoard.FpgaConfigInfo) returns(AEConsoleBoard.FpgaConfigStatusInfo);
+}
+
+
+// 设备信息
+enum DeviceType
+{
+    Ku115_Solo = 0;
+    Ku115_Dual = 1;
+    Ku115_Quad = 2;
+
+    Vu440_Solo = 10;
+    Vu440_Dual = 11;
+    Vu440_Quad = 12;
+    Vu440_Hexa = 13;
+
+    Vu19P_Solo = 20;
+    Vu19P_Dual = 21;
+    Vu19P_Quad = 22;
+}
+
+enum OnlineStatus
+{
+    Unknown_OnlineStatus = 0;
+    Online = 1;                                                     // 在线  （已打开、可用）
+    Offline = 2;                                                    // 不在线（未打开、不可用）
+}
+
+enum ConnectionStatus
+{
+    Unknown_ConnectionStatus = 0;                                   // 未上线不可连接
+    Connected = 1;                                                  // 上线已被连接
+    Disconnected = 2;                                               // 上线未被连接
+}
+
+message ConnectionStatusInfo
+{
+    string DeviceId = 1;
+    ConnectionStatus ConnectionStatus = 2;
+
+    AEConsoleBoard.ResultCode ResultCode = 100;
+}
+
+message ConnectionStatusListInfo
+{
+    repeated ConnectionStatusInfo ConnectionStatusInfo = 1;
+
+    AEConsoleBoard.ResultCode ResultCode = 100;
+}
+
+message DeviceIdInfo
+{
+    string DeviceId = 1;
+}
+
+message DeviceInfo
+{
+    string DeviceId = 1;
+    string DeviceUUID = 2;
+    string DeviceType = 3;
+    repeated string OwnedBoardIds = 4;
+    OnlineStatus OnlineStatus = 5;
+    ConnectionStatus ConnectionStatus = 6;
+    AEConsoleBoard.RunningStatus RunningStatus = 7;
+}
+
+message DeviceTypeInfo
+{
+    DeviceType DeviceType = 1;
+
+    AEConsoleBoard.ResultCode ResultCode = 100;
+}
+
+// FMC 电压
+message FmcVoltageInfoByFile
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+
+    string ConfigFilePath = 3;                  // FMC 配置文件路径
+}
+
+// PLL 时钟
+message PllClockInfoByFile
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+
+    string ConfigFilePath = 3;                  // PLL 配置文件路径
+}
+
+// FPGA 配置
+message BoardFpgaConfigInfo
+{
+    string BoardServiceUrl = 1;
+    string BoardFpgaId = 2;
+
+    AEConsoleBoard.ResultCode ResultCode = 100;
+}
+
+

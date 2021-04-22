@@ -1,0 +1,287 @@
+syntax = "proto3";
+
+option csharp_namespace = "AEConsoleBoard";
+
+package AEConsoleBoard;
+
+import "google/protobuf/empty.proto";
+//======================================================================
+// 服务定义
+//======================================================================
+// 硬件板卡相关功能
+service AEConsoleBoard { 
+    // 服务管理
+    rpc GetServiceStatus(google.protobuf.Empty) returns(ServiceStatusInfo);
+
+    // 寄存器访问
+    rpc RegisterRead(RegAccessInfo) returns(RegAccessInfo);
+    rpc RegisterWrite(RegAccessInfo) returns(ResultCodeInfo);
+
+    // 板卡信息
+    rpc GetBoardType(google.protobuf.Empty) returns(BoardTypeInfo);
+
+    // 远程断上电
+    rpc GetPowerStatus(PowerStatusInfo) returns(PowerStatusInfo);
+    rpc SetPowerStatus(PowerStatusInfo) returns(ResultCodeInfo);
+
+    // Reset 相关
+    rpc Reset(ResetInfo) returns(ResultCodeInfo);
+    rpc SetSync(SyncInfo) returns(ResultCodeInfo);
+
+    // FMC 电压
+    rpc GetFmcVoltage(FmcVoltageInfo) returns(FmcVoltageInfo);
+    rpc SetFmcVoltage(FmcVoltageInfo) returns(ResultCodeInfo);
+
+    // PLL 时钟
+    rpc GetPllClock(PllClockInfo) returns(PllClockInfo);
+    rpc SetPllClock(PllClockInfo) returns(ResultCodeInfo);
+
+    // FPGA 配置
+    rpc FpgaConfig(stream FpgaConfigInfo) returns(ResultCodeInfo);
+    rpc GetFpgaConfigStatus(FpgaConfigInfo) returns(FpgaConfigStatusInfo);
+
+    // 网络配置
+    rpc SetNetworkSetting(NetworkSettingInfo) returns(ResultCodeInfo);
+    rpc GetNetworkSetting(google.protobuf.Empty) returns(NetworkSettingInfo);
+}
+
+
+// 通用
+enum ResultCode {
+    Succeed = 0;
+    Failed = 1;
+    Exceptional = 2;
+
+    Unknown = 100;
+}
+
+message ResultCodeInfo
+{
+    ResultCode ResultCode = 1;
+}
+
+// 板卡信息
+enum CoreBoardType
+{
+    Ku115 = 0;
+    Vu440 = 1;
+    S10  = 2;
+    Vu19P = 3;
+}
+
+enum BaseBoardType
+{
+    Solo = 0;
+    Dual = 1;
+    Quad = 2;
+    CLK_440 = 4;
+    CLK_19P = 5;
+}
+
+enum BoardType
+{
+    Ku115_Solo = 0;
+    Ku115_Dual = 1;
+
+    Vu440_Solo = 10;
+    Vu440_Dual = 11;
+    Vu440_Quad = 12;
+
+    Vu19P_Solo = 20;
+    Vu19P_Dual = 21;
+    Vu19P_Quad = 22;
+
+    Clock_Gen = 100;
+}
+
+message BoardInfo
+{
+    string BoardId = 1;
+    string BoardUUID = 2;
+    string IpAddress = 3;
+    int32 IpPort = 4;
+    string BelongDeviceSlotId = 5;
+    BaseBoardType BaseBoardType = 6;
+    CoreBoardType CoreBoardType = 7;
+}
+
+message BoardTypeInfo
+{
+    CoreBoardType CoreBoardType = 1;
+    BaseBoardType BaseBoardType = 2;
+
+    ResultCode ResultCode = 100;
+}
+
+
+// 服务管理
+enum RunningStatus
+{
+    Normal = 0;                                 // 正常状态
+    Abnormal = 2;                               // 异常状态
+}
+
+message ServiceStatusInfo
+{
+    RunningStatus RunningStatus = 1;
+    ResultCode ResultCode = 2;
+}
+
+
+// 寄存器访问
+enum AccessType
+{
+    Read = 0;
+    Write = 1;
+}
+
+message RegAccessInfo 
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // 所属 FPGA 编号
+    int32 RegAddr = 4;                          // 寄存器地址
+    int32 RegData = 5;                          // 寄存器值
+    AccessType AccessType = 6;                  // 访问类型（读/写）
+
+    ResultCode ResultCode = 100;
+}
+
+
+// 远程断上电
+enum PowerOnOff
+{
+    PowerOff = 0;
+    PowerOn = 1;
+}
+
+message PowerStatusInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // 所属 FPGA 编号
+    PowerOnOff PowerOnOff = 4;                  // PowerOnOff 状态：PowerOn 或 PowerOff
+
+    ResultCode ResultCode = 100;
+}
+
+
+// Reset 相关
+message ResetInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // 所属 FPGA 编号
+    int32 ResetId = 4;                          // Reset 编号
+
+    ResultCode ResultCode = 100;
+}
+
+message SyncInfo
+{
+    int32 OperationType = 1;
+    float Frequency = 2;
+    int32 Width = 3;
+    int32 PulsePattern = 4;
+    bool isSaveToSd = 5;
+
+    ResultCode ResultCode = 100;
+}
+
+
+// FMC 电压
+message FmcVoltageInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // 所属 FPGA 编号
+    int32 FmcId = 4;                            // FMC 编号
+    int32 VoltageValueIndex = 5;                // 电压值索引（0：1.2V；  1：1.35V；  2：1.5V；  3：1.8V）
+    bool IsWriteToEeprom = 6;                   // 是否断电保存（true：保存； false：不保存）
+
+    ResultCode ResultCode = 100;                
+}
+
+
+// PLL 时钟
+enum PllRunMode
+{
+    FreeRun = 0;
+    Standard = 1;
+    ZeroDelay = 2;
+}
+
+message PllClockInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // 所属 FPGA 编号
+    int32 PllId = 4;                            // PLL 编号
+    PllRunMode PllRunMode = 5;                  // 运行模式
+    float InputFrequency = 6;                   // 输入时钟的频率（单位为 MHz）
+    repeated bool OutputEnables = 7;            // 输出时钟是否可用（true：可用； false：不可用）
+    repeated float OutputFrequencys = 8;        // 输出时钟频率（单位为 MHz）
+    repeated int32 RegAddresses = 9;            // 一次设定相关所有寄存器的地址
+    repeated int32 RegValues = 10;              // 一次设定相关所有寄存器的值
+    string ConfigFilePath = 11;                 // 配置文件路径（文件由 ClockBuilder Pro 工具导出）
+    bool IsSavetoSdCard = 12;                   // 配置是否保存到 SD 卡中
+
+    int32 InputClockId = 13;                    // 输入 Channel （IN0/IN1/IN2/IN3）
+
+    ResultCode ResultCode = 100;                
+}
+
+
+// FPGA 配置
+enum OperationType
+{
+    ConfigFpga = 0;
+    SaveToSdCard = 1;
+    ConfigAndSave = 2;
+    ReconfigFpga = 3;
+}
+
+enum ConfigStatus
+{
+    Configing = 0;
+    ConfigSucceed = 1;
+    ConfigFailed = 2;
+}
+
+message FpgaConfigInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // FPGA 编号
+    OperationType OperationType = 4;            // 操作类型（ConfigFpga、SaveToSdCard、ConfigAndSave）
+    string FilePath = 5;                        // 待烧写的 Fpga Bin 文件路径（包含文件名）
+
+    int64 FileSize = 6;                         // Fpga Bin 文件大小
+    bytes FileContents = 7;                     // Fpga Bin 文件内容（文件较大时，采用流式传输）
+
+    ResultCode ResultCode = 100;                
+}
+
+message FpgaConfigStatusInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string FpgaId = 3;                          // FPGA 编号
+    OperationType OperationType = 4;            // 操作类型
+    ConfigStatus ConfigStatus = 5;              // 当前操作状态
+    double Progress = 6;                        // 进度
+    OperationType ActiveOperation = 7;          // 当前操作
+
+    ResultCode ResultCode = 100;                
+}
+
+// 网络设置
+message NetworkSettingInfo
+{
+    string DeviceId = 1;                        // 所属设备 编号
+    string BoardId = 2;                         // 所属板卡 编号
+    string IpAddress = 3;                       // 板卡 IP4 地址
+    string IpPort = 4;                          // 板卡服务 端口号
+
+    ResultCode ResultCode = 100;                
+}

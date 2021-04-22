@@ -79,7 +79,7 @@
   import {RegAccessInfo, ResultCodeInfo} from '../../../main/AEConsoleBoard_pb';
   import {AEConsoleGatewayClient} from '../../../main/AEConsoleGateway_grpc_web_pb';
 
-  var client = new AEConsoleGatewayClient('http://172.22.113.238:10002', null, null);
+  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
   var request = new RegAccessInfo();
 
   export default {
@@ -87,7 +87,8 @@
     components: {  },
     data() {
       return {
-        deviceId: "202103220001",
+        //deviceId: "202103220001",
+        deviceId: "202104200001",
         fpgaId : 'fpga1',
         regAddr: '0000',
         regValue: '0000'

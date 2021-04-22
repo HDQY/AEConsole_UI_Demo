@@ -1678,6 +1678,86 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getBoardFpgaConfi
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.AEConsoleBoard.FpgaConfigInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_StartFpgaConfig = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+  grpc.web.MethodType.UNARY,
+  AEConsoleBoard_pb.FpgaConfigInfo,
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleBoard.FpgaConfigInfo,
+ *   !proto.AEConsoleBoard.ResultCodeInfo>}
+ */
+const methodInfo_AEConsoleGateway_StartFpgaConfig = new grpc.web.AbstractClientBase.MethodInfo(
+  AEConsoleBoard_pb.ResultCodeInfo,
+  /**
+   * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  AEConsoleBoard_pb.ResultCodeInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleBoard.ResultCodeInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.startFpgaConfig =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_StartFpgaConfig,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleBoard.FpgaConfigInfo} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.startFpgaConfig =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/StartFpgaConfig',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_StartFpgaConfig);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleBoard.FpgaConfigInfo,
  *   !proto.AEConsoleBoard.FpgaConfigStatusInfo>}
  */
 const methodDescriptor_AEConsoleGateway_GetFpgaConfigStatus = new grpc.web.MethodDescriptor(
