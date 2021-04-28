@@ -87,17 +87,20 @@
   import Reset from './Reset.vue';
 
 
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
 
   export default {
     name: 'main-Window',
     components: { TitleBar, PowerControl, Reset, FmcVoltageConfig, PllClockConfig, RegAccess, FpgaConfig, },
     data() {
         return {
+          easydata: '',
         selectedId: 'RegisterAccess'
       }
     },
     mounted() {
+        this.easydata = this.$route.params.data
+        this.$store.commit("global/DEVICEID", this.easydata[0].deviceId)
         let currentWindow = remote.getCurrentWindow();
         currentWindow.setSize(1200, 800, true);
         currentWindow.center();

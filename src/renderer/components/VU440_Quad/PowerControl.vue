@@ -42,7 +42,7 @@
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import PowerButton from '../CustomControl/PowerButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
   var request = new PowerStatusInfo();
 
   export default {
@@ -50,13 +50,13 @@
     components: {SwitchButton, PowerButton  },
     data() {
       return {
-        //deviceId: "202103220001",
-        deviceId: "202104200001",
+        deviceId: "",
         fpgaId : "fpga1",
         powerStatus: POWERON
       }
     },
     mounted() {
+      this.deviceId = this.$store.getters.deviceId
         request.setDeviceid(this.deviceId);
         request.setFpgaid("fpga1");
         client.getPowerStatus(request, {}, (err, response) => {

@@ -43,8 +43,13 @@ proto.AEConsoleGateway.AEConsoleGatewayClient =
   /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname;
-
+  //this.hostname_ = hostname;
+  if (hostname) {
+    this.hostname_ = hostname;
+  } else {
+    this.hostname_ = 'http://127.0.0.1:10002';
+  };
+  
 };
 
 
@@ -1520,8 +1525,8 @@ proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setPllClock =
  *   !proto.AEConsoleGateway.PllClockInfoByFile,
  *   !proto.AEConsoleBoard.ResultCodeInfo>}
  */
-const methodDescriptor_AEConsoleGateway_SetPllClockByFile = new grpc.web.MethodDescriptor(
-  '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+const methodDescriptor_AEConsoleGateway_StartSetPllClockByFile = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/StartSetPllClockByFile',
   grpc.web.MethodType.UNARY,
   proto.AEConsoleGateway.PllClockInfoByFile,
   AEConsoleBoard_pb.ResultCodeInfo,
@@ -1542,7 +1547,7 @@ const methodDescriptor_AEConsoleGateway_SetPllClockByFile = new grpc.web.MethodD
  *   !proto.AEConsoleGateway.PllClockInfoByFile,
  *   !proto.AEConsoleBoard.ResultCodeInfo>}
  */
-const methodInfo_AEConsoleGateway_SetPllClockByFile = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AEConsoleGateway_StartSetPllClockByFile = new grpc.web.AbstractClientBase.MethodInfo(
   AEConsoleBoard_pb.ResultCodeInfo,
   /**
    * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request
@@ -1565,13 +1570,13 @@ const methodInfo_AEConsoleGateway_SetPllClockByFile = new grpc.web.AbstractClien
  * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleBoard.ResultCodeInfo>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.setPllClockByFile =
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.startSetPllClockByFile =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+      '/AEConsoleGateway.AEConsoleGateway/StartSetPllClockByFile',
       request,
       metadata || {},
-      methodDescriptor_AEConsoleGateway_SetPllClockByFile,
+      methodDescriptor_AEConsoleGateway_StartSetPllClockByFile,
       callback);
 };
 
@@ -1584,13 +1589,93 @@ proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.setPllClockByFile =
  * @return {!Promise<!proto.AEConsoleBoard.ResultCodeInfo>}
  *     Promise that resolves to the response
  */
-proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.setPllClockByFile =
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.startSetPllClockByFile =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/AEConsoleGateway.AEConsoleGateway/SetPllClockByFile',
+      '/AEConsoleGateway.AEConsoleGateway/StartSetPllClockByFile',
       request,
       metadata || {},
-      methodDescriptor_AEConsoleGateway_SetPllClockByFile);
+      methodDescriptor_AEConsoleGateway_StartSetPllClockByFile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.AEConsoleGateway.PllClockInfoByFile,
+ *   !proto.AEConsoleGateway.PllConfigStatusInfo>}
+ */
+const methodDescriptor_AEConsoleGateway_GetPllConfigStatusInfo = new grpc.web.MethodDescriptor(
+  '/AEConsoleGateway.AEConsoleGateway/GetPllConfigStatusInfo',
+  grpc.web.MethodType.UNARY,
+  proto.AEConsoleGateway.PllClockInfoByFile,
+  proto.AEConsoleGateway.PllConfigStatusInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.PllConfigStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.AEConsoleGateway.PllClockInfoByFile,
+ *   !proto.AEConsoleGateway.PllConfigStatusInfo>}
+ */
+const methodInfo_AEConsoleGateway_GetPllConfigStatusInfo = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.AEConsoleGateway.PllConfigStatusInfo,
+  /**
+   * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.AEConsoleGateway.PllConfigStatusInfo.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.AEConsoleGateway.PllConfigStatusInfo)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.AEConsoleGateway.PllConfigStatusInfo>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.AEConsoleGateway.AEConsoleGatewayClient.prototype.getPllConfigStatusInfo =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetPllConfigStatusInfo',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetPllConfigStatusInfo,
+      callback);
+};
+
+
+/**
+ * @param {!proto.AEConsoleGateway.PllClockInfoByFile} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.AEConsoleGateway.PllConfigStatusInfo>}
+ *     Promise that resolves to the response
+ */
+proto.AEConsoleGateway.AEConsoleGatewayPromiseClient.prototype.getPllConfigStatusInfo =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/AEConsoleGateway.AEConsoleGateway/GetPllConfigStatusInfo',
+      request,
+      metadata || {},
+      methodDescriptor_AEConsoleGateway_GetPllConfigStatusInfo);
 };
 
 

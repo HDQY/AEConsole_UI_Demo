@@ -68,7 +68,7 @@
   import ProgramButton from '../CustomControl/ProgramButton.vue';
   import VoltageControl from '../CustomControl/VoltageControl.vue';
   
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
   var request = new FmcVoltageInfo();
 
   export default {
@@ -76,12 +76,12 @@
     components: {VoltageControl, ProgramButton },
     data() {
       return {
-        //deviceId: "202103220001",
-        deviceId: "202104200001",
+        deviceId: "",
         fpgaId : 'fpga1',
       }
     },
     mounted() {
+        this.deviceId = this.$store.getters.deviceId;
         request.setDeviceid(this.deviceId);
         request.setFpgaid(this.fpgaId);
         request.setFmcid(3);

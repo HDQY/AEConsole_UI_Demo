@@ -90,7 +90,7 @@
   import OutputClockControl from '../CustomControl/OutputClockControl.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
   var request = new PllClockInfo();
 
   export default {
@@ -99,8 +99,7 @@
     props: ['uid'],
     data() {
       return {
-        //deviceId: "202103220001",
-        deviceId: "202104200001",
+        deviceId: "",
         fpgaId : "fpga1-base",
         pllId : 1,
         regFileName: '',
@@ -121,6 +120,7 @@
       return 'pll_6_PllClockConfig' + this.uid;},
     },
     mounted() {
+      this.deviceId = this.$store.getters.deviceId;
         request.setDeviceid(this.deviceId);
         request.setFpgaid(this.fpgaId);
         request.setPllid(1);
@@ -150,7 +150,7 @@
               this.$refs.outputControl_09, this.$refs.outputControl_10
           ];
 
-        var filePath = "Si5345_ZDM_50M.txt";
+        var filePath = "Data\\Si5345_ZDM_50M.txt";
         request.setDeviceid(this.deviceId);
         request.setFpgaid(this.fpgaId);
         request.setPllid(this.pllId);

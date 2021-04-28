@@ -86,7 +86,7 @@
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
   var fpgaConfigRequest = new FpgaConfigInfo();
 
   export default {
@@ -94,12 +94,14 @@
     components: {SwitchButton, ProgramButton  },
     data() {
       return {
-        //deviceId: "202103220001",
-        deviceId: "202104200001",
+        deviceId: "",
         fpgaId : "fpga1",
         binFileName: '',
         interval_UpdateConfigStatus: '',
       }
+    },
+    mounted() {
+      this.deviceId = this.$store.getters.deviceId;
     },
     methods: {
       selectBinFile:function() {

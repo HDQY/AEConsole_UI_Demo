@@ -344,7 +344,8 @@ proto.AEConsoleBoard.ResultCodeInfo.prototype.toObject = function(opt_includeIns
  */
 proto.AEConsoleBoard.ResultCodeInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
-    resultcode: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -385,6 +386,10 @@ proto.AEConsoleBoard.ResultCodeInfo.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -421,6 +426,13 @@ proto.AEConsoleBoard.ResultCodeInfo.serializeBinaryToWriter = function(message, 
       f
     );
   }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -439,6 +451,24 @@ proto.AEConsoleBoard.ResultCodeInfo.prototype.getResultcode = function() {
  */
 proto.AEConsoleBoard.ResultCodeInfo.prototype.setResultcode = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional string ErrorMessage = 2;
+ * @return {string}
+ */
+proto.AEConsoleBoard.ResultCodeInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.ResultCodeInfo} returns this
+ */
+proto.AEConsoleBoard.ResultCodeInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -786,7 +816,8 @@ proto.AEConsoleBoard.BoardTypeInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     coreboardtype: jspb.Message.getFieldWithDefault(msg, 1, 0),
     baseboardtype: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -835,6 +866,10 @@ proto.AEConsoleBoard.BoardTypeInfo.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
       break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -882,6 +917,13 @@ proto.AEConsoleBoard.BoardTypeInfo.serializeBinaryToWriter = function(message, w
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -939,6 +981,24 @@ proto.AEConsoleBoard.BoardTypeInfo.prototype.getResultcode = function() {
  */
 proto.AEConsoleBoard.BoardTypeInfo.prototype.setResultcode = function(value) {
   return jspb.Message.setProto3EnumField(this, 100, value);
+};
+
+
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.BoardTypeInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.BoardTypeInfo} returns this
+ */
+proto.AEConsoleBoard.BoardTypeInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
 };
 
 
@@ -1140,7 +1200,8 @@ proto.AEConsoleBoard.RegAccessInfo.toObject = function(includeInstance, msg) {
     regaddr: jspb.Message.getFieldWithDefault(msg, 4, 0),
     regdata: jspb.Message.getFieldWithDefault(msg, 5, 0),
     accesstype: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -1204,6 +1265,10 @@ proto.AEConsoleBoard.RegAccessInfo.deserializeBinaryFromReader = function(msg, r
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -1280,6 +1345,13 @@ proto.AEConsoleBoard.RegAccessInfo.serializeBinaryToWriter = function(message, w
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -1412,6 +1484,24 @@ proto.AEConsoleBoard.RegAccessInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.RegAccessInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.RegAccessInfo} returns this
+ */
+proto.AEConsoleBoard.RegAccessInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -1448,7 +1538,8 @@ proto.AEConsoleBoard.PowerStatusInfo.toObject = function(includeInstance, msg) {
     boardid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     fpgaid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     poweronoff: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -1504,6 +1595,10 @@ proto.AEConsoleBoard.PowerStatusInfo.deserializeBinaryFromReader = function(msg,
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -1566,6 +1661,13 @@ proto.AEConsoleBoard.PowerStatusInfo.serializeBinaryToWriter = function(message,
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -1662,6 +1764,24 @@ proto.AEConsoleBoard.PowerStatusInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.PowerStatusInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.PowerStatusInfo} returns this
+ */
+proto.AEConsoleBoard.PowerStatusInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -1698,7 +1818,8 @@ proto.AEConsoleBoard.ResetInfo.toObject = function(includeInstance, msg) {
     boardid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     fpgaid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     resetid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -1754,6 +1875,10 @@ proto.AEConsoleBoard.ResetInfo.deserializeBinaryFromReader = function(msg, reade
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -1816,6 +1941,13 @@ proto.AEConsoleBoard.ResetInfo.serializeBinaryToWriter = function(message, write
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -1912,6 +2044,24 @@ proto.AEConsoleBoard.ResetInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.ResetInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.ResetInfo} returns this
+ */
+proto.AEConsoleBoard.ResetInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -1949,7 +2099,8 @@ proto.AEConsoleBoard.SyncInfo.toObject = function(includeInstance, msg) {
     width: jspb.Message.getFieldWithDefault(msg, 3, 0),
     pulsepattern: jspb.Message.getFieldWithDefault(msg, 4, 0),
     issavetosd: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -2009,6 +2160,10 @@ proto.AEConsoleBoard.SyncInfo.deserializeBinaryFromReader = function(msg, reader
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -2078,6 +2233,13 @@ proto.AEConsoleBoard.SyncInfo.serializeBinaryToWriter = function(message, writer
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -2192,6 +2354,24 @@ proto.AEConsoleBoard.SyncInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.SyncInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.SyncInfo} returns this
+ */
+proto.AEConsoleBoard.SyncInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -2230,7 +2410,8 @@ proto.AEConsoleBoard.FmcVoltageInfo.toObject = function(includeInstance, msg) {
     fmcid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     voltagevalueindex: jspb.Message.getFieldWithDefault(msg, 5, 0),
     iswritetoeeprom: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -2294,6 +2475,10 @@ proto.AEConsoleBoard.FmcVoltageInfo.deserializeBinaryFromReader = function(msg, 
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -2370,6 +2555,13 @@ proto.AEConsoleBoard.FmcVoltageInfo.serializeBinaryToWriter = function(message, 
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -2502,6 +2694,24 @@ proto.AEConsoleBoard.FmcVoltageInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.FmcVoltageInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.FmcVoltageInfo} returns this
+ */
+proto.AEConsoleBoard.FmcVoltageInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -2554,7 +2764,8 @@ proto.AEConsoleBoard.PllClockInfo.toObject = function(includeInstance, msg) {
     configfilepath: jspb.Message.getFieldWithDefault(msg, 11, ""),
     issavetosdcard: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
     inputclockid: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -2654,6 +2865,10 @@ proto.AEConsoleBoard.PllClockInfo.deserializeBinaryFromReader = function(msg, re
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -2779,6 +2994,13 @@ proto.AEConsoleBoard.PllClockInfo.serializeBinaryToWriter = function(message, wr
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -3113,6 +3335,24 @@ proto.AEConsoleBoard.PllClockInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.PllClockInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.PllClockInfo} returns this
+ */
+proto.AEConsoleBoard.PllClockInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -3152,7 +3392,8 @@ proto.AEConsoleBoard.FpgaConfigInfo.toObject = function(includeInstance, msg) {
     filepath: jspb.Message.getFieldWithDefault(msg, 5, ""),
     filesize: jspb.Message.getFieldWithDefault(msg, 6, 0),
     filecontents: msg.getFilecontents_asB64(),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -3220,6 +3461,10 @@ proto.AEConsoleBoard.FpgaConfigInfo.deserializeBinaryFromReader = function(msg, 
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -3303,6 +3548,13 @@ proto.AEConsoleBoard.FpgaConfigInfo.serializeBinaryToWriter = function(message, 
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -3477,6 +3729,24 @@ proto.AEConsoleBoard.FpgaConfigInfo.prototype.setResultcode = function(value) {
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.FpgaConfigInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.FpgaConfigInfo} returns this
+ */
+proto.AEConsoleBoard.FpgaConfigInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -3516,7 +3786,8 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.toObject = function(includeInstance, m
     configstatus: jspb.Message.getFieldWithDefault(msg, 5, 0),
     progress: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
     activeoperation: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -3584,6 +3855,10 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.deserializeBinaryFromReader = function
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -3667,6 +3942,13 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.serializeBinaryToWriter = function(mes
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -3817,6 +4099,24 @@ proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.setResultcode = function(val
 };
 
 
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.FpgaConfigStatusInfo} returns this
+ */
+proto.AEConsoleBoard.FpgaConfigStatusInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
+};
+
+
 
 
 
@@ -3853,7 +4153,8 @@ proto.AEConsoleBoard.NetworkSettingInfo.toObject = function(includeInstance, msg
     boardid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     ipaddress: jspb.Message.getFieldWithDefault(msg, 3, ""),
     ipport: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0)
+    resultcode: jspb.Message.getFieldWithDefault(msg, 100, 0),
+    errormessage: jspb.Message.getFieldWithDefault(msg, 101, "")
   };
 
   if (includeInstance) {
@@ -3909,6 +4210,10 @@ proto.AEConsoleBoard.NetworkSettingInfo.deserializeBinaryFromReader = function(m
     case 100:
       var value = /** @type {!proto.AEConsoleBoard.ResultCode} */ (reader.readEnum());
       msg.setResultcode(value);
+      break;
+    case 101:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrormessage(value);
       break;
     default:
       reader.skipField();
@@ -3971,6 +4276,13 @@ proto.AEConsoleBoard.NetworkSettingInfo.serializeBinaryToWriter = function(messa
   if (f !== 0.0) {
     writer.writeEnum(
       100,
+      f
+    );
+  }
+  f = message.getErrormessage();
+  if (f.length > 0) {
+    writer.writeString(
+      101,
       f
     );
   }
@@ -4064,6 +4376,24 @@ proto.AEConsoleBoard.NetworkSettingInfo.prototype.getResultcode = function() {
  */
 proto.AEConsoleBoard.NetworkSettingInfo.prototype.setResultcode = function(value) {
   return jspb.Message.setProto3EnumField(this, 100, value);
+};
+
+
+/**
+ * optional string ErrorMessage = 101;
+ * @return {string}
+ */
+proto.AEConsoleBoard.NetworkSettingInfo.prototype.getErrormessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 101, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.AEConsoleBoard.NetworkSettingInfo} returns this
+ */
+proto.AEConsoleBoard.NetworkSettingInfo.prototype.setErrormessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 101, value);
 };
 
 

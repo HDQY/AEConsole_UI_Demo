@@ -67,7 +67,7 @@
   import ResetButton from '../CustomControl/ResetButton.vue';
   import SwitchButton from '../CustomControl/SwitchButton.vue';
 
-  var client = new AEConsoleGatewayClient('http://127.0.0.1:10002', null, null);
+  var client = new AEConsoleGatewayClient();
   var request = new ResetInfo();
 
   export default {
@@ -75,9 +75,12 @@
     components: {ResetButton, SwitchButton  },
     data() {
       return {
-        deviceId: "202103220001",
+        deviceId: "",
         fpgaId : "fpga1"
       }
+    },
+    mounted() {
+      this.deviceId = this.$store.getters.deviceId
     },
     methods: {
       clickButton:function()
