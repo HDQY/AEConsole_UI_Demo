@@ -75,7 +75,7 @@
                     {
                       msg += " Fpga1 PowerOff.";
                     }
-                    alert(msg);
+                    //alert(msg);
                 }
               });
     },

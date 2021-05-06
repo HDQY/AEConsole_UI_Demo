@@ -1,7 +1,7 @@
 const global={
     namespaced:true,
     state: {
-        deviceId: 'IC-TEST-DUAL-0001',
+        deviceId: 'IC-TEST-DUAL-0003',
     },
     mutations: {
         DEVICEID(state, val) {
