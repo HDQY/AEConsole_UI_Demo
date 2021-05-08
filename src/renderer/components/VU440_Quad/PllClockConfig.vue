@@ -159,6 +159,7 @@
         request.setConfigfilepath(filePath);
         request.clearOutputenablesList();
         request.clearOutputfrequencysList();
+        request.setIssavetosdcard(false);
         for (var i = 0; i < 10; i++)
         {
           request.addOutputenables(outputControls[i].IsMyEnabled, i);

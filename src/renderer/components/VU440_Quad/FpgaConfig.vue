@@ -80,8 +80,7 @@
 <script>
   const fs = require('fs');
   const { dialog } = require('electron').remote;
-  import {FpgaConfigInfo, OperationType, FpgaConfigStatus, FpgaConfigProgress } from '../../../main/AEConsoleBoard_pb';
-  import {ConfigStatus, CONFIGFPGA, RECONFIGFPGA} from '../../../main/AEConsoleBoard_pb';
+  import {FpgaConfigInfo, OperationType, ConfigStatus} from '../../../main/AEConsoleBoard_pb';
   import {AEConsoleGatewayClient} from '../../../main/AEConsoleGateway_grpc_web_pb';
   import SwitchButton from '../CustomControl/SwitchButton.vue';
   import ProgramButton from '../CustomControl/ProgramButton.vue';
@@ -142,7 +141,7 @@
                   this.$refs.label_ProgramStatus.innerText = "READY";
                   this.$refs.label_ProgramStatus.style.background = "#8FB752";
                 }
-                else if (configStatus == ConfigStatus.CONFIGSUCCEED)
+                else if (configStatus == ConfigStatus.CONFIGFAILED)
                 {
                   this.$refs.label_ProgramStatus.innerText = "FAILED";
                   this.$refs.label_ProgramStatus.style.background = "#FF0000";
@@ -161,8 +160,10 @@
 
         fpgaConfigRequest.setDeviceid(this.deviceId);
         fpgaConfigRequest.setFpgaid(this.fpgaId);
-        //fpgaConfigRequest.setOperationtype(CONFIGFPGA);
-        fpgaConfigRequest.setOperationtype(2); 
+        fpgaConfigRequest.setOperationtype(OperationType.CONFIGFPGA);
+        //fpgaConfigRequest.setOperationtype(OperationType.SAVETOSDCARD);
+        //fpgaConfigRequest.setOperationtype(OperationType.CONFIGANDSAVE);
+        //fpgaConfigRequest.setOperationtype(OperationType.RECONFIGFPGA);
         fpgaConfigRequest.setFilepath(this.binFileName); 
 
         client.startFpgaConfig(fpgaConfigRequest, {}, (err, response) => {

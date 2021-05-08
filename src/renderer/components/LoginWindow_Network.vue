@@ -90,6 +90,8 @@
 
       var pid_GatewayService = child.pid;
       ipc.send('setpid_GatewayService', pid_GatewayService);
+
+      this.deviceId = this.$store.getters.deviceId;
     },
     methods: {
       updateInfo: function () {
@@ -156,16 +158,23 @@
       },
 
       async clickButton() {
-        // for (let i = 0; i < this.tableData.length; i++) {
-        //   await this.getBoardType(this.tableData[i].boardName, i)
-        // }
-        // if (this.type) {
-          this.$router.push({
+         request.setDeviceid(this.deviceId);
+          client.getBoardType(request, {}, (err, response) => {
+            if (err) {
+              alert(`Unexpected error for getBoardType: code = ${err.code}` +
+                  `, message = "${err.message}"`);
+              reject(err)
+            } 
+            else 
+            {
+              //
+            }
+          });
+
+         this.$router.push({
             name: 'main-window-vu440-quad',
             params: {data: this.tableData}
           });
-        // }
-
       },
     }
   }
